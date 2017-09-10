@@ -1,13 +1,15 @@
 # Write a program to calculate the credit card balance after one year if a 
 # person only pays the minimum monthly payment required by the credit card company each month.
 
+MONTHS_IN_A_YEAR = 12
+
 # Given by the problem
 balance = 484
 annualInterestRate = 0.2
 monthlyPaymentRate = 0.04
 
 def get_monthly_interest_rate():
-    return annualInterestRate/12
+    return annualInterestRate/MONTHS_IN_A_YEAR
 
 def minimum_monthly_payment(prev_balance):
     return monthlyPaymentRate * prev_balance
@@ -24,7 +26,7 @@ def get_remaining_balance(balance):
     return updated_balance_each_month(unpaid_balance)
 
 def get_total_year_balance(balance, count):
-    if count == 12:
+    if count == MONTHS_IN_A_YEAR:
         return balance
     else:
         new_balance = get_remaining_balance(balance)
