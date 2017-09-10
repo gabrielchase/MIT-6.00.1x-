@@ -11,8 +11,7 @@ def polygon_perimeter(n, s):
     return n * s
 
 def polysum(n, s):
-    polysum = (polygon_area(n, s) + polygon_perimeter(n, s)**2)
-    return float('{0:.4f}'.format(polysum))
+    return round((polygon_area(n, s) + polygon_perimeter(n, s)**2), 4)
 
 assert polysum(59, 71) == 18942804.2883
 assert polysum(60, 22) == 1880929.0524
