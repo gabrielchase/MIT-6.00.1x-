@@ -42,16 +42,8 @@ def isWordGuessed(secretWord, lettersGuessed):
       False otherwise
     '''
     
-    for letter in secretWord:
-      if letter in lettersGuessed:
-        continue
-      else:
-        return False
+    return set(secretWord) <= set(lettersGuessed)
     
-    return True
-
-
-
 def getGuessedWord(secretWord, lettersGuessed):
     '''
     secretWord: string, the word the user is guessing
@@ -71,10 +63,6 @@ def getGuessedWord(secretWord, lettersGuessed):
           output_guess[idx] = letter
 
     return ''.join(output_guess)
-      
-
-
-
 
 def getAvailableLetters(lettersGuessed):
     '''
@@ -83,8 +71,7 @@ def getAvailableLetters(lettersGuessed):
       yet been guessed.
     '''
     
-    return ''.join(sorted(list(set(list(string.ascii_lowercase)) - set(lettersGuessed))))
-    
+    return ''.join(sorted(set(string.ascii_lowercase) - set(lettersGuessed))) 
 
 def hangman(secretWord):
     '''
@@ -126,10 +113,8 @@ def hangman(secretWord):
       available_letters = getAvailableLetters(letters_guessed)
 
       print('Available letters: {}'.format(available_letters))
-      print('Please guess a letter: ', end='')
       
-      guessed_letter = input()
-      
+      guessed_letter = input('Please guess a letter: ')
       
       if guessed_letter in letters_guessed:
         print("Oops! You've already guessed that letter: {}".format(guessed_word))
