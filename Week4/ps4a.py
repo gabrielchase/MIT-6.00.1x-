@@ -161,9 +161,14 @@ def updateHand(hand, word):
     returns: dictionary (string -> int)
     """
     # TO DO ... <-- Remove this comment when you code this function
+    
+    cloned_hand = hand.copy()
+    
+    for letter in word:
+        if cloned_hand.get(letter) > 0:
+            cloned_hand[letter] = cloned_hand.get(letter) - 1
 
-
-
+    return cloned_hand
 #
 # Problem #3: Test word validity
 #
@@ -274,9 +279,9 @@ def playGame(wordList):
 # Build data structures used for entire session and play game
 #
 if __name__ == '__main__':
-    # wordList = loadWords()
-    # playGame(wordList)
+    wordList = loadWords()
+    playGame(wordList)
 
-    hand = dealHand(4)
-    print(hand)
-    displayHand(hand)
+    # hand = dealHand(4)
+    # print(hand)
+    # updateHand(hand, 'sexy')
