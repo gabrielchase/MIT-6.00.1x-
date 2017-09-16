@@ -51,18 +51,28 @@ def getGuessedWord(secretWord, lettersGuessed):
     returns: string, comprised of letters and underscores that represents
       what letters in secretWord have been guessed so far.
     '''
-    
-    correct_letters = []
-    output_guess = ['_'] * len(secretWord)
-    
-    for letter in lettersGuessed:
-      if letter in secretWord:
-        letter_indexes = [idx for idx, secretLetter in enumerate(secretWord) if secretLetter == letter]
-        
-        for idx in letter_indexes:
-          output_guess[idx] = letter
 
-    return ''.join(output_guess)
+    letters = []
+    
+    # Better solution
+    for letter in secretWord:
+      if letter in lettersGuessed:
+        letters.append(letter)
+      else:
+        letters.append('_')
+    return ''.join(letters)
+    
+    # correct_letters = []
+    # output_guess = ['_'] * len(secretWord)
+    
+    # for letter in lettersGuessed:
+    #   if letter in secretWord:
+    #     letter_indexes = [idx for idx, secretLetter in enumerate(secretWord) if secretLetter == letter]
+        
+    #     for idx in letter_indexes:
+    #       output_guess[idx] = letter
+
+    # return ''.join(output_guess)
 
 def getAvailableLetters(lettersGuessed):
     '''

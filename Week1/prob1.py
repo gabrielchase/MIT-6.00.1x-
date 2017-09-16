@@ -6,11 +6,14 @@ s = 'azcbobobegghakl'
 VOWELS = ['a', 'e', 'i', 'o', 'u']
 
 def vowel_counter(input_string):
-    vowel_count = 0
-    for i in input_string.lower():    
-        if i in VOWELS:
-            vowel_count += 1
-    return vowel_count
+    # Idiomatic, pythonic way
+    return sum(c in VOWELS for c in input_string)
+    
+    # vowel_count = 0
+    # for i in input_string.lower():    
+    #     if i in VOWELS:
+    #         vowel_count += 1
+    # return vowel_count
 
 print('Statement: %s' % s)
 print('Number of vowels: {}'.format(vowel_counter(s)))

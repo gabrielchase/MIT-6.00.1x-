@@ -10,23 +10,36 @@
 s = 'azcbobobegghakl'
 
 def get_longest_substring(input_string):
-    temp = []
-    temp_strings = []
-    for idx, char in enumerate(input_string):
-        if idx < len(input_string)-1: 
-            temp.append(char)
-            if char > input_string[idx+1] :
-                temp_string = ''.join(temp)
-                temp_strings.append(temp_string)
-                del temp[:]
-            if idx == len(input_string)-2:
-                if char < input_string[idx+1]:
-                    temp.append(input_string[idx+1])
-                    temp_string = ''.join(temp)
-                    temp_strings.append(temp_string)
-                    del temp[:]
+    # Better solution
 
-    return max(temp_strings, key=len)
+    max_str = ''
+    run = ''
+    
+    for idx, char in enumerate(input_string):
+        if char < input_string[idx-1]:
+            run = ''
+        run += char
+        if len(run) > len(max_str):
+            max_str = run
+    return max_str
+    
+    # temp = []
+    # temp_strings = []
+    # for idx, char in enumerate(input_string):
+    #     if idx < len(input_string)-1: 
+    #         temp.append(char)
+    #         if char > input_string[idx+1] :
+    #             temp_string = ''.join(temp)
+    #             temp_strings.append(temp_string)
+    #             del temp[:]
+    #         if idx == len(input_string)-2:
+    #             if char < input_string[idx+1]:
+    #                 temp.append(input_string[idx+1])
+    #                 temp_string = ''.join(temp)
+    #                 temp_strings.append(temp_string)
+    #                 del temp[:]
+
+    # return max(temp_strings, key=len)
 
 print('Statement: %s' % s)
 print('Longest substring in alphabetical order is: {}'.format(get_longest_substring(s)))

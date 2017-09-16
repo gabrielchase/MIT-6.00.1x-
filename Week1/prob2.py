@@ -7,11 +7,16 @@ s = 'azcbobobegghakl'
 
 def bob_counter(input_string):
     bob_counter = 0
-    for idx, char in enumerate(input_string):
-        if char == 'o' and idx != len(input_string)-1 and idx > 0:
-            if input_string[idx-1] == 'b' and input_string[idx+1] == 'b':
-                bob_counter += 1
+
+    # Better solution
+    for idx in range(len(input_string)):
+        bob_counter += input_string[idx:idx+3] == 'bob'
     return bob_counter
+    # for idx, char in enumerate(input_string):
+    #     if char == 'o' and idx != len(input_string)-1 and idx > 0:
+    #         if input_string[idx-1] == 'b' and input_string[idx+1] == 'b':
+    #             bob_counter += 1
+    # return bob_counter
 
 print('Statement: %s' % s)
 print('Number of times bob occurs is: {}'.format(bob_counter(s)))
