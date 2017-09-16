@@ -161,14 +161,14 @@ def updateHand(hand, word):
     returns: dictionary (string -> int)
     """
     # TO DO ... <-- Remove this comment when you code this function
-    
-    cloned_hand = hand.copy()
-    
-    for letter in word:
-        if cloned_hand.get(letter) > 0:
-            cloned_hand[letter] = cloned_hand.get(letter) - 1
 
-    return cloned_hand
+    # Better solution    
+    hand = hand.copy()
+
+    for letter in word:
+        hand[letter] -= 1
+
+    return hand
 #
 # Problem #3: Test word validity
 #
@@ -183,8 +183,21 @@ def isValidWord(word, hand, wordList):
     hand: dictionary (string -> int)
     wordList: list of lowercase strings
     """
-    # TO DO ... <-- Remove this comment when you code this function
 
+    # Using collections solution
+    # import collections
+    # if collections.Counter(word) - collections.Counter(hand):
+    #     return False
+
+    hand = hand.copy()
+
+    for letter in word:
+        if hand.get(letter, 0) > 0:
+            hand[letter] -= 1
+        else:
+            return False
+
+    return word in wordList
 
 #
 # Problem #4: Playing a hand
